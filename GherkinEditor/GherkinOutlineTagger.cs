@@ -50,7 +50,10 @@ namespace GherkinEditor
           {
             currentRegion.EndLine = lastNonEmptyLine;
             currentRegion.Hover = newSnapshot.GetText(AsSnapshotSpan(currentRegion, newSnapshot));
-            newRegions.Add(currentRegion);
+            if (currentRegion.EndLine > currentRegion.StartLine)
+            {
+              newRegions.Add(currentRegion);
+            }            
           }
           currentRegion = new Region
           {
